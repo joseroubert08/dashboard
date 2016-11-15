@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { withRouter } from 'react-router'
 import { ipcRenderer, remote } from 'electron'
 import Layout from '../Layout'
 import Button from '../Button'
@@ -10,20 +10,25 @@ ipcRenderer.on('debugFromRestartMain', (e, arg) => {
   /* this is hack to reload app... */
   remote.getCurrentWindow().reload()
 })
-export default class Settings extends React.Component {
+class Settings extends React.Component {
   handleReset = () => {
     window.localStorage.removeItem('services')
     console.log('RESET Triggered')
     /* this restart works in dev but not in prod */
     ipcRenderer.send('reset-and-restart-app', 'BOOM')
   }
+
+  redirectToManageCredentials = () => {
+    this.props.history.push('/manage-credentials')
+  }
+
   render() {
     const content = (
       <div className={styles.settings}>
         <h3>Settings</h3>
         <h5>Current app version: {getAppVersion}</h5>
-        <Button style={{ width: 300 }}>
-          <Link style={{ color: 'black' }} to='/manage-credentials'>Mange AWS profiles</Link>
+        <Button style={{ width: 300 }} onClick={this.redirectToManageCredentials}>
+          Mange AWS profiles
         </Button>
         <p>More settings are coming soon...</p>
         <p>Drop us a note in the feedback/feature request section if you want something specific =)</p>
@@ -42,3 +47,5 @@ export default class Settings extends React.Component {
     return <Layout content={content} />
   }
 }
+
+export default withRouter(Settings)
