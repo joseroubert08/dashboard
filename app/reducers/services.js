@@ -10,6 +10,7 @@ import omit from 'lodash/omit'
 import {
   ADD_SERVICE,
   REMOVE_SERVICE,
+  UPDATE_SERVICE,
   SET_STAGE_FOR_SERVICE,
   SET_REGION_FOR_SERVICE,
   SET_PROFILE_FOR_SERVICE,
@@ -23,6 +24,8 @@ import {
   region as defaultRegion,
   stage as defaultStage,
 } from '../constants/serviceDefaults'
+import flattenObject from '../utils/flattenObject'
+import unflattenObject from '../utils/unflattenObject'
 import saveServicesToStorage from '../utils/saveServicesToStorage'
 
 export default (state = {}, action) => {
@@ -71,6 +74,30 @@ export default (state = {}, action) => {
       // Note: this is a side-effect and should be handled with redux-sage or similar
       saveServicesToStorage(newState3)
       return newState3
+    case UPDATE_SERVICE:
+      console.log('REDUCER RAN UPDATE SERVICE')
+      // console.log('action.service', action.service)
+      // console.log('action.valuePath', action.valuePath)
+      // console.log('action.newValue', action.newValue)
+      const objectpath = action.valuePath.replace('service.config.', '')
+      // console.log('objectpath', objectpath)
+      const newConfig = { ...{}, ...action.service.config }
+      const flatConfig = flattenObject(newConfig)
+      if (flatConfig[objectpath]) {
+        flatConfig[objectpath] = action.newValue
+      }
+      const updatedConfig = unflattenObject(flatConfig)
+      // objectPath.set(newConfig, objectpath, action.newValue)
+      const newStateUpdateService = {
+        ...state,
+        [action.service.id]: {
+          ...state[action.service.id],
+          config: updatedConfig
+        }
+      }
+      // Note: this is a side-effect and should be handled with redux-sage or similar
+      saveServicesToStorage(newStateUpdateService)
+      return newStateUpdateService
     case SET_REGION_FOR_SERVICE:
       const newState4 = {
         ...state,

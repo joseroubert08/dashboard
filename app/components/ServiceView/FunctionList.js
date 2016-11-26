@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { map } from 'lodash'
 import { shell } from 'electron'
+import ServiceValue from '../../containers/ServiceValue'
 import Card from '../Card'
 import Button from '../Button'
 import styles from './FunctionList.css'
@@ -25,22 +26,41 @@ const FunctionList = (props) => {
     if (func.events && func.events.length) {
       functionEvents = func.events.map((event, i) => {
         const eventDisplay = Object.keys(event).map((eventType, j) => {
-          console.log('event', event)
-          console.log('event[eventType]', event[eventType])
-          console.log('typeof event[eventType]', typeof event[eventType])
+          // console.log('event', event)
+          // console.log('event[eventType]', event[eventType])
+          // console.log('typeof event[eventType]', typeof event[eventType])
           let eventValues = event[eventType]
+          const fromVar = event[`${eventType}_var`]
+          console.log('fromVar', fromVar)
           if (event[eventType] && typeof event[eventType] === 'object') {
             eventValues = Object.keys(event[eventType]).map((property, n) => {
               const value = event[eventType][property]
+              // path to value in JSON and AST
+              const editPath = `functions.${functionName}.events[${i}].${eventType}.${property}`
 
+              const isFromVariable = event[eventType][`${property}_variable`]
               if (typeof value !== 'object') {
                 const displayVal = (typeof value === 'boolean') ? JSON.stringify(value) : value
+                let renderValue = (
+                  <ServiceValue
+                    service={service}
+                    valueKey={editPath}
+                    value={displayVal}
+                  />
+                )
+                if (isFromVariable) {
+                  renderValue = (
+                    <span>
+                      {isFromVariable}
+                    </span>
+                  )
+                }
                 return (
-                  <li key={n}>
+                  <li key={`event-prop-${n}`}>
                     <span className={styles.property}>
                       {property}:
                     </span>
-                    <span>{displayVal}</span>
+                    {renderValue}
                   </li>
                 )
               }
@@ -48,7 +68,7 @@ const FunctionList = (props) => {
             })
           }
           return (
-            <div key={j} className={styles.eventDisplay}>
+            <div key={`event-value-${j}`} className={styles.eventDisplay}>
               <div>
                 Event - {eventType}
               </div>
@@ -60,22 +80,23 @@ const FunctionList = (props) => {
         })
 
         return (
-          <div key={i}>
+          <div key={`event-${i}`}>
             {eventDisplay}
           </div>
         )
       })
     }
-    /*
-    <Link to={`/service/${service.id}/function/${functionName}`}>
-      <Button>View Function</Button>
-    </Link>
-     */
     return (
       <Card key={functionName} className={styles.functionCard}>
-        <div>
+        <div className={styles.functionInfo}>
           <div className={styles.functionName}>
-            <span to={`/service/${service.id}/function/${functionName}`}>{functionName}</span>
+            <span to={`/service/${service.id}/function/${functionName}`}>
+              <ServiceValue
+                service={service}
+                valueKey={`functions.${functionName}`}
+                value={functionName}
+              />
+            </span>
           </div>
 
           <div>{functionEvents}</div>
@@ -124,11 +145,13 @@ FunctionList.propTypes = {
 export default FunctionList
 
 const getLanguage = (service) => {
-  if (!service.config.provider) {
+  if (!service.config || !service.config.provider) {
     return 'error'
   }
-  const { config } = service
-  const { provider } = config
+  const provider = service.config.provider
+  if (!provider.runtime) {
+    return 'NA'
+  }
   if (provider.runtime.match(/node/)) {
     return 'js'
   }
