@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import { shell } from 'electron'
 import Logo from '../../static/images/bolt.svg'
-import Feedback from '../components/Feedback'
+// import Feedback from '../components/Feedback'
 import checkForUpdates from '../utils/checkForUpdates'
 import SettingsIcon from '../../static/images/settings.svg'
 import styles from './App.css'
@@ -71,7 +71,7 @@ export default class App extends Component {
           </div>
         </div>
         {this.props.children}
-        <Feedback />
+        {/* <Feedback /> */}
       </div>
     )
   }
