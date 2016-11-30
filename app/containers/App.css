@@ -8,7 +8,7 @@ $NavBackground: #FFD426;
 }
 .navigationWrapper {
   color: #1C1C1C;
-  background: #FFF;
+  // background: #FFF;
 }
 .navigationFixed {
   position: fixed;
@@ -27,14 +27,14 @@ $NavBackground: #FFD426;
   height: $navHeight;
 }
 .leftNav {
-  background: $NavBackground;
+  // background: $NavBackground;
   height: $navHeight;
   overflow: hidden;
 }
 .middleNav {
   flex-grow: 1;
   height: $navHeight;
-  background: $NavBackground;
+  // background: $NavBackground;
   align-items: center;
   display: flex;
   a {
@@ -57,14 +57,14 @@ $NavBackground: #FFD426;
   align-items: center;
   /*border-bottom: 1px solid rgba(0, 0, 0, 0.08);*/
   height: $navHeight;
-  background: $NavBackground;
+  // background: $NavBackground;
 }
 .logo {
   display: flex;
   width: 100%;
   height: $navHeight;
   width: $navHeight;
-  background: #FFD426;
+  // background: #FFD426;
   margin-right: 1.75em;
   align-items: center;
   justify-content: center;
