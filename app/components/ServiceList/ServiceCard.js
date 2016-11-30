@@ -61,22 +61,24 @@ const ServiceCard = ({ service, showDeleteModal }) => {
         </div>
       </div>
       <div className={styles.actions}>
-        { service.error
+        {/* service.error
           ? <Button disabled>View Service</Button>
           : <Link to={`/service/${service.id}`}><Button>View Service</Button></Link>
-        }
-        <Button
+        */}
+        <div
+          className={styles.action}
           disabled={!!service.error}
           onClick={() => shell.openItem(service.projectPath)}
         >
-          Open directory
-        </Button>
-        <Button
+          O
+        </div>
+        <div
+          className={styles.action}
           type='button'
           onClick={() => showDeleteModal(service.id)}
         >
-          Remove from list
-        </Button>
+          X
+        </div>
       </div>
     </Card>
   )
