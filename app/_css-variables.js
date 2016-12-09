@@ -10,4 +10,10 @@ module.exports = {
   gray2: '#202020',
   black1: '#212121',
   black2: '#1C1C1C',
+  tile: '4rem',
+  tile_xs: '1rem',
+  tile_xxs: '.25rem',
+  tile_xl: '16rem',
+  tile_xxl: '64rem',
+  padding: '1.5rem',
 }
