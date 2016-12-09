@@ -1,6 +1,9 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
+[role="button"] {
+  cursor: pointer;
+}
 html {
   color: #555;
   font: 16px/1.5 'Roboto', sans-serif;
@@ -13,20 +16,42 @@ body {
   min-height: 100%;
   margin: 0;
   // background: #333;
+  -webkit-app-region: drag;
 }
 a {
-  color: #0074c2;
+  // color: #0074c2;
+  color: inherit;
+  text-decoration: none;
+  -webkit-app-region: no-drag;
 }
 i {
   font-style: normal;
+}
+input {
+  font: inherit;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-app-region: no-drag;
 }
 strong {
   font-weight: 500;
 }
 code {
-  font: @code;
+  // font: @code;
+  font-family: monaco;
+  font-size: 12px;
+  line-height: 1.25rem;
+  // line-height: 1rem;
   display: block;
+  padding: 0 .25rem;
   white-space: pre;
+  // background: #eee;
+  background: rgba(0, 0, 0, 0.08);
+  // border-radius: 2px;
+  border-radius: .25rem;
+  // padding: .25rem;
 }
 pre {
   font: @code;
