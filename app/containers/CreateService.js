@@ -10,11 +10,15 @@ import styles from './CreateService.css'
 import createDirectory from '../utils/createDirectory'
 import addService from '../actions/addService'
 import walkDirSync from '../utils/walkDirSync'
+import selectDirectory from '../utils/selectDirectory'
 import parseServiceYaml from '../utils/parseServiceYaml'
 import getServerlessCMDPath from '../utils/serverless/getServerlessCMDPath'
 import slugify from '../utils/slugify'
+import getServerlessYamlFilePath from '../utils/getServerlessYamlFilePath'
 import spawn from '../utils/child_process/betterSpawn'
 import validServiceName from '../utils/validServiceName'
+import mergeYamlObjects from '../utils/yaml/mergeYamlObjects'
+import parseYaml from '../utils/parseYaml'
 
 const mapStateToProps = (state) => {
   return {
@@ -155,9 +159,36 @@ class CreateService extends Component {
     })
   }
 
+  openService = () => {
+    // TODO verify that the user doesn't open the same directory twice
+    const directories = selectDirectory()
+    if (directories && directories.length) {
+      const servicePath = directories[0]
+      const filePaths = walkDirSync(servicePath)
+      const yamlPath = getServerlessYamlFilePath(servicePath)
+      const rawYAML = parseYaml(yamlPath)
+      parseServiceYaml(servicePath).then((data) => {
+        const id = slugify(servicePath)
+        // traverse both yaml objects and add variable sources
+        const merge = mergeYamlObjects(rawYAML, data)
+        this.props.addService(
+          {
+            id,
+            filePaths,
+            config: merge,
+            projectPath: servicePath,
+          },
+          this.props.credentials
+        )
+        this.props.history.push(`service/${id}`)
+      })
+    }
+  }
+
   render() {
     const content = (
       <div className={styles.wrapper}>
+        <div className="open" onClick={this.openService}>open</div>
         <h1>Create a Service</h1>
         <div className={styles.field}>
           <label htmlFor='directory'>1. Choose a directory to install your service</label>
