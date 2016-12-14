@@ -17,14 +17,10 @@ const Dashboard = (props) => {
   if (isEmpty(props.credentials)) {
     return <AddCredentials addCredentials={props.addCredentials} />
   }
-  return (
-    <div>
-      { isEmpty(props.services)
-        ? <Welcome history={props.history} />
-        : <ServiceList history={props.history} />
-      }
-    </div>
-  )
+  if (isEmpty(props.services)) {
+    return <Welcome history={props.history} />
+  }
+  return <ServiceList history={props.history} />
 }
 
 export default connect(mapStateToProps, {
