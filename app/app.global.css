@@ -14,7 +14,8 @@ body {
   margin: 0;
 }
 a {
-  color: #0074c2;
+  color: inherit;
+  text-decoration: none;
 }
 button {
   background: none;
@@ -25,16 +26,22 @@ button {
 i {
   font-style: normal;
 }
+input {
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+}
 strong {
   font-weight: 500;
 }
 code {
-  font: @code;
-  display: block;
+  font-family: Monaco;
+  font-size: .75rem;
+  padding: 0 .25rem;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: .25rem;
   white-space: pre;
-}
-pre {
-  font: @code;
 }
 hr {
   border: 0;
