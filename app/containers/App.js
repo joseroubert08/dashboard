@@ -49,27 +49,34 @@ export default class App extends Component {
     }
     return (
       <div className={styles.app}>
-        <div className={styles.navigationWrapper}>
-          <div className={styles.navigationBumper} />
-          <div className={styles.navigationFixed}>
-            <div className={styles.leftNav}>
-              <Link to='/'>
-                <div className={styles.logo}>
-                  <img src={Logo} role='presentation' />
-                </div>
-              </Link>
-            </div>
-            <div className={styles.middleNav}>
-              <Link to='/'>Services</Link>
-              {updateText}
-            </div>
-            <div className={styles.rightNav}>
-              <Link className={styles.settings} to='/settings'>
-                <img src={SettingsIcon} role='presentation' />
-              </Link>
-            </div>
+        <div className={styles.bar}>
+          <div className={styles.title}>
+            {'Title'}
           </div>
         </div>
+        {/*
+          <div className={styles.navigationWrapper}>
+            <div className={styles.navigationBumper} />
+            <div className={styles.navigationFixed}>
+              <div className={styles.leftNav}>
+                <Link to='/'>
+                  <div className={styles.logo}>
+                    <img src={Logo} role='presentation' />
+                  </div>
+                </Link>
+              </div>
+              <div className={styles.middleNav}>
+                <Link to='/'>Services</Link>
+                {updateText}
+              </div>
+              <div className={styles.rightNav}>
+                <Link className={styles.settings} to='/settings'>
+                  <img src={SettingsIcon} role='presentation' />
+                </Link>
+              </div>
+            </div>
+          </div>
+        */}
         {this.props.children}
         <Feedback />
       </div>

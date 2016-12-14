@@ -1,9 +1,25 @@
+.bar {
+  box-sizing: content-box;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 22px;
+  border-bottom: 1px solid #eee;
+  -webkit-app-region: drag;
+}
+.title {
+  font-size: .75rem;
+}
+
 $navHeight: 45px;
 $NavBackground: #FFD426;
 .app {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
 }
 .navigationWrapper {
   color: #1C1C1C;
