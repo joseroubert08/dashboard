@@ -1,7 +1,7 @@
 .service {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 30px;
+  width: 20rem;
+  height: 20rem;
+  padding: $padding;
 }
 .info {
 

@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { shell } from 'electron'
 import { Link } from 'react-router'
 import { PATH_NOT_FOUND, PARSING_YAML_FAILED } from '../../constants/errors'
-import Card from '../Card'
 import Button from '../Button'
 import styles from './ServiceCard.css'
 
@@ -13,7 +12,7 @@ const propTypes = {
 
 const ServiceCard = ({ service, showDeleteModal }) => {
   return (
-    <Card className={styles.service} key={service.id}>
+    <div className={styles.service} key={service.id}>
       <div className={styles.info}>
         { service.error && service.error.type === PATH_NOT_FOUND &&
           <div>
@@ -78,7 +77,7 @@ const ServiceCard = ({ service, showDeleteModal }) => {
           Remove from list
         </Button>
       </div>
-    </Card>
+    </div>
   )
 }
 

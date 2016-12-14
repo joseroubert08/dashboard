@@ -1,6 +1,5 @@
 .serviceListPageWrapper {
-  padding-left: 30px;
-  padding-right: 30px;
+
 }
 .pageTitle {
   h1 {
@@ -35,8 +34,6 @@
 }
 
 .serviceList {
-  box-shadow: 0px 1px 2px 0px rgba(162,162,162,0.50);
-  margin-bottom: 80px;
   a {
     position: relative;
     letter-spacing: 0px;
