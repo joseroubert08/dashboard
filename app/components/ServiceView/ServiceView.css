@@ -4,6 +4,7 @@
   height: 100%;
 }
 .header {
+  display: none !important; // TODO dev only
   display: flex;
   // background: #fff;
   padding: 0 30px;
@@ -57,6 +58,7 @@
   }
 }
 .serviceMeta {
+  display: none !important;
   display: flex;
   margin-top: 15px;
   padding-left: 30px;
@@ -75,6 +77,8 @@
 .serviceInfo {
   padding-left: 30px;
   padding-right: 30px;
+  padding: 0 4rem !important;
+  min-height: 200vh !important;
 }
 
 .contents {
@@ -86,6 +90,7 @@
   height: 100%;
 }
 .contentsRight {
+  display: none !important;
   width: 40%;
   height: 100%;
 }
@@ -105,4 +110,106 @@
     padding: 10px;
     height: 230px;
   }
+}
+
+
+
+
+.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $tile;
+  height: $tile;
+  pointer-events: auto;
+  transition: opacity 250ms 0ms;
+  &:hover,
+  &:active {
+    path {
+      // stroke-width: 2 !important;
+      stroke: #0074c2 !important;
+      fill: #0074c2 !important;
+    }
+    .icon {
+      // box-shadow:
+      //   0  1px #eee  inset,
+      //   0 -1px #eee  inset,
+      //   1px  0 #eee  inset,
+      //   -1px 0 #eee  inset;
+      transition: 100ms 0ms;
+    }
+  }
+  &:active {
+    .icon {
+      background: #eee;
+      transition: 0ms 0ms;
+    }
+  }
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $tile;
+  height: $tile;
+  border-radius: $tile;
+  transition: 500ms 0ms;
+}
+.head {
+  display: flex;
+}
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.body {
+
+}
+.title {
+  font-size: 2em;
+  font-weight: 300;
+  line-height: 1;
+}
+.path {
+  padding-top: .375rem;
+  padding-bottom: .375rem;
+  pointer-events: auto;
+  code {
+    transition: 250ms 0ms;
+  }
+  &:hover {
+    code {
+      background: rgba(0, 0, 0, 0);
+      box-shadow:
+        0  1px #ddd  inset,
+        0 -1px #ddd  inset,
+        1px  0 #ddd  inset,
+        -1px 0 #ddd  inset;
+      transition: 100ms 0ms;
+    }
+  }
+}
+.service {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  padding: 1.5rem $tile !important;
+  position: relative !important;
+}
+.snippet {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

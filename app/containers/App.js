@@ -6,6 +6,8 @@ import Logo from '../../static/images/bolt.svg'
 import checkForUpdates from '../utils/checkForUpdates'
 import SettingsIcon from '../../static/images/settings.svg'
 import styles from './App.css'
+import AddService from '../components/AddService'
+import addService from '../actions/addService'
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class App extends Component {
@@ -15,7 +17,8 @@ export default class App extends Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
-      update: false
+      update: false,
+      filterText: '',
     }
   }
   componentDidMount() {
@@ -37,6 +40,12 @@ export default class App extends Component {
     e.preventDefault()
     shell.openExternal('http://bit.ly/serverless-dashboard')
   }
+  handleFilterInput = (e) => {
+    this.setState({
+      filterText: e.target.value
+    })
+  }
+
   render() {
     const { update } = this.state
     let updateText
@@ -49,29 +58,26 @@ export default class App extends Component {
     }
     return (
       <div className={styles.app}>
-        <div className={styles.navigationWrapper}>
-          <div className={styles.navigationBumper} />
-          <div className={styles.navigationFixed}>
-            <div className={styles.leftNav}>
-              <Link to='/'>
-                <div className={styles.logo}>
-                  <img src={Logo} role='presentation' />
-                </div>
-              </Link>
-            </div>
-            <div className={styles.middleNav}>
-              <Link to='/'>Services</Link>
-              {updateText}
-            </div>
-            <div className={styles.rightNav}>
-              <Link className={styles.settings} to='/settings'>
-                <img src={SettingsIcon} role='presentation' />
-              </Link>
-            </div>
+        <div className={styles.head}>
+          <div className={styles.search}>
+            <label className={styles.label}>
+              {'Search services'}
+            </label>
+            <input className={styles.input} type="text" tabIndex={1} onChange={this.handleFilterInput} />
           </div>
+          <AddService
+            addService={this.props.addService}
+            credentials={this.props.credentials}
+            services={this.props.services}
+            history={this.props.history}
+          />
+          <div className={styles.border} />
         </div>
-        {this.props.children}
+        <div className={styles.body}>
+          {this.props.children}
+        </div>
         {/* <Feedback /> */}
+        <Link className={styles.killme} to='/' />
       </div>
     )
   }

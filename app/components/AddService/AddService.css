@@ -1,7 +1,44 @@
-.addService {
-  width: 450px;
+.actions {
   display: flex;
+  // padding-top: 1rem;
 }
-.button {
-  margin: 10px;
+.action {
+  // background: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // width: $tile;
+  // height: $tile;
+  // width: 3rem;
+  // height: 3rem;
+  pointer-events: auto;
+  transition: opacity 250ms 0ms;
+  &:hover,
+  &:active {
+    .icon {
+      box-shadow:
+        0  1px #eee  inset,
+        0 -1px #eee  inset,
+        1px  0 #eee  inset,
+        -1px 0 #eee  inset;
+      transition: 100ms 0ms;
+    }
+  }
+  &:active {
+    .icon {
+      background: #eee;
+      transition: 0ms 0ms;
+    }
+  }
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $tile;
+  height: $tile;
+  // width: 3rem;
+  // height: 3rem;
+  border-radius: 4rem;
+  transition: 500ms 0ms;
 }

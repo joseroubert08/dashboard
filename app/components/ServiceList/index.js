@@ -3,7 +3,7 @@ import Modal from 'serverless-site/src/components/Modal'
 import Layout from '../Layout'
 import Button from '../Button'
 import ServiceCard from './ServiceCard'
-import AddService from '../AddService'
+// import AddService from '../AddService'
 import styles from './ServiceList.css'
 
 // import { sync as checkFileExists } from 'path-exists' // todo check folder paths exist
@@ -71,7 +71,7 @@ export default class ServicesList extends React.Component {
     const props = this.props
     const renderServices = this.getServices(this.state.filterText)
     const content = (
-      <div className={styles.serviceListPageWrapper}>
+      <div className={styles.container}>
         <Modal
           active={this.state.showModal}
           onEscKeyDown={this.hideModal}
@@ -85,10 +85,10 @@ export default class ServicesList extends React.Component {
             <Button onClick={this.hideModal}>Cancel</Button>
           </div>
         </Modal>
-        <div className={styles.pageTitle}>
+        {/*<div className={styles.pageTitle}>
           <h1>Serverless Services</h1>
-        </div>
-        <div className={styles.actionBar}>
+        </div>*/}
+        {/*<div className={styles.head}>
           <input onChange={this.handleFilterInput} placeholder='Filter Services' />
           <AddService
             addService={props.addService}
@@ -96,8 +96,8 @@ export default class ServicesList extends React.Component {
             services={props.services}
             history={props.history}
           />
-        </div>
-        <div className={styles.serviceList}>
+        </div>*/}
+        <div className={styles.body}>
           {renderServices}
         </div>
       </div>
