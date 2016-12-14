@@ -16,6 +16,12 @@ body {
 a {
   color: #0074c2;
 }
+button {
+  background: none;
+  border: 1px solid;
+  outline: none;
+  cursor: pointer;
+}
 i {
   font-style: normal;
 }
