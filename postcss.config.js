@@ -3,7 +3,7 @@ const localVars = require('./app/_css-variables')
 const siteVars = require('serverless-site/src/_variables')
 /* postCSS config */
 module.exports = [
-  require('postcss-cssnext')({ browsers: 'last 2 versions' }),
+  // require('postcss-cssnext')({ browsers: 'last 2 versions' }),
   /* require global variables */
   require('postcss-simple-vars')({
     variables: function variables() {
