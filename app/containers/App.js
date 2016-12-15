@@ -58,6 +58,11 @@ export default class App extends Component {
     }
     return (
       <div className={styles.app}>
+        {/*<div className={styles.chrome}>
+          <div className={styles.title}>
+            {'Title'}
+          </div>
+        </div>*/}
         <div className={styles.head}>
           <div className={styles.search}>
             <label className={styles.label}>
@@ -71,7 +76,7 @@ export default class App extends Component {
             services={this.props.services}
             history={this.props.history}
           />
-          <div className={styles.border} />
+          {/*<div className={styles.border} />*/}
         </div>
         <div className={styles.body}>
           {this.props.children}
