@@ -14,9 +14,9 @@ const propTypes = {
 
 const ServiceCard = ({ service, showDeleteModal }) => {
   return (
-    <div className={styles.service} key={service.id}>
-      <Link to={`/service/${service.id}`} className={styles.link} />
-      <div className={styles.infos}>
+    <Link className={styles.service} to={`/service/${service.id}`} key={service.id}>
+      {/*<Link to={`/service/${service.id}`} className={styles.link} />*/}
+      <div className={styles.infos} >
         { service.error && service.error.type === PATH_NOT_FOUND &&
           <div>
             Couldn't find the service path anymore. In case you moved it please remove
@@ -71,7 +71,7 @@ const ServiceCard = ({ service, showDeleteModal }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
