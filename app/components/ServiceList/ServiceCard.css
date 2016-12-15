@@ -21,10 +21,14 @@
   // align-items: flex-start;
   // justify-content: space-between;
   // padding: 20px 30px;
-  padding: $padding;
+  // padding: $padding;
+  padding-top: $padding;
+  padding-right: 0;
+  padding-bottom: $padding;
+  padding-left: $padding;
   &:not(:hover) {
     .actions {
-      display: none;
+      // display: none;
     }
   }
 }
@@ -102,12 +106,13 @@
   // align-items: center;
 }
 .actions {
-  // position: relative;
+  position: relative;
   display: flex;
-  position: absolute;
+  align-items: center;
+  // position: absolute;
   // top: 1.5rem;
-  top: $tile;
-  right: 1.5rem;
+  // top: $tile;
+  // right: 1.5rem;
   // display: flex;
   // flex-direction: column;
   button {
@@ -121,8 +126,8 @@
   justify-content: center;
   // width: 1.5rem;
   // height: 1.5rem;
-  // width: $tile;
-  // height: $tile;
+  width: $tile;
+  height: $tile;
   &:hover,
   &:active {
     // background: #ccc;
