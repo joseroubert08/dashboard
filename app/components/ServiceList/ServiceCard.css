@@ -1,3 +1,8 @@
+.service,
+.action,
+.path {
+  cursor: default;
+}
 .infos {
   // position: absolute;
   // top: 0;
@@ -11,6 +16,7 @@
 }
 .service {
   display: flex;
+  align-items: center;
   position: relative;
   // align-items: flex-start;
   // justify-content: space-between;
@@ -106,7 +112,7 @@
 .actions {
   position: relative;
   display: flex;
-  align-items: center;
+  // align-items: center;
   // position: absolute;
   // top: 1.5rem;
   // top: $tile;
@@ -129,13 +135,19 @@
   &:hover,
   &:active {
     // background: #ccc;
-    .icon {
-      box-shadow:
-        0  1px #eee  inset,
-        0 -1px #eee  inset,
-        1px  0 #eee  inset,
-        -1px 0 #eee  inset;
+    path {
+      // stroke-width: 2 !important;
+      stroke: #0074c2 !important;
+      fill: #0074c2 !important;
       transition: 100ms 0ms;
+    }
+    .icon {
+      // box-shadow:
+      //   0  1px #eee  inset,
+      //   0 -1px #eee  inset,
+      //   1px  0 #eee  inset,
+      //   -1px 0 #eee  inset;
+      // transition: 100ms 0ms;
     }
   }
   &:active {

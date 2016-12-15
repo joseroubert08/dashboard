@@ -37,7 +37,7 @@ const ServiceCard = ({ service, showDeleteModal }) => {
         <div className={styles.title}>
           {service.config.service}
         </div>
-        <div className={styles.path} role="button" onClick={ () => shell.openExternal(`file://${service.projectPath}`) } disabled={!!service.error}>
+        <div className={styles.path} onClick={ () => shell.openExternal(`file://${service.projectPath}`) } disabled={!!service.error}>
           <code>
             {service.projectPath}
           </code>
@@ -63,7 +63,7 @@ const ServiceCard = ({ service, showDeleteModal }) => {
         >
           O
         </div>*/}
-        <div className={styles.action} role='button' onClick={ () => showDeleteModal(service.id) }>
+        <div className={styles.action} onClick={ () => showDeleteModal(service.id) }>
           <div className={styles.icon}>
             <svg viewBox="0 0 100 100" style={{ width: '1em', height: '1em' }}>
               <path className={styles.fill} vector-effect="non-scaling-stroke" d="M59,50c0,5-4,9-9,9s-9-4-9-9s4-9,9-9S59,45,59,50z M14,41c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S19,41,14,41z M86,41 c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S91,41,86,41z" />
