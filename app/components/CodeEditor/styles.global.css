@@ -385,11 +385,3 @@ span.CodeMirror-selectedtext { background: none; }
 .cm-s-dracula .CodeMirror-activeline-background { background: rgba(255,255,255,0.1); }
 .cm-s-dracula .CodeMirror-matchingbracket { text-decoration: underline; color: white !important; }
 
-/*
-overrides
- */
-code, div.CodeMirror-linenumber, div.CodeMirror pre {
-   font-family: source-code-pro,Menlo,Consolas,Courier New,monospace;
-   font-size: 12px;
-   line-height: 1.3;
-}
