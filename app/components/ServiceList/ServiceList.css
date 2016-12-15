@@ -34,17 +34,8 @@
 }
 
 .serviceList {
-  a {
-    position: relative;
-    letter-spacing: 0px;
-    text-decoration: none;
-    i {
-      display: none;
-      margin-left: 5px;
-      margin-top: 3px;
-    }
-    &:hover i {
-      display: block;
-    }
-  }
+  display: flex;
+  flex-flow: row wrap;
+  padding: $padding;
+  padding-right: 0;
 }

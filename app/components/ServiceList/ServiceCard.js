@@ -25,41 +25,32 @@ const ServiceCard = ({ service, showDeleteModal }) => {
             Couldn't parse the serverless.yaml file.
           </div>
         }
-        <Link
-          className={styles.serviceLink}
-          to={`/service/${service.id}`}
-        >
-          <span>{service.config.service}</span>
-          <i className='fa fa-external-link' aria-hidden='true' />
-        </Link>
-        <div className={styles.serviceMetaWrapper}>
-          <div className={styles.serviceMeta}>
-            <span className={styles.serviceMetaProperty}>
-              Path:
-            </span>
-            <span className={styles.serviceMetaValue}>
-              {service.projectPath}
-            </span>
+        <div className={styles.head}>
+          <Link
+            className={styles.name}
+            to={`/service/${service.id}`}
+          >
+            {service.config.service}
+          </Link>
+          <code className={styles.path}>
+            {service.projectPath}
+          </code>
+        </div>
+        <div className={styles.body}>
+          <div className={styles.snippet}>
+            {/*'description text here'*/}
+            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque tellus nulla, eget.'}
           </div>
-          <div className={styles.serviceMeta}>
-            <span className={styles.serviceMetaProperty}>
-              Provider:
-            </span>
-            <span className={styles.serviceMetaValue}>
-              {service.config.provider.name}
-            </span>
-          </div>
-          <div className={styles.serviceMeta}>
-            <span className={styles.serviceMetaProperty}>
-              Runtime:
-            </span>
-            <span className={styles.serviceMetaValue}>
-              {service.config.provider.runtime}
-            </span>
+        </div>
+        <div className={styles.foot}>
+          <div className={styles.vendors}>
+            {/*service.config.provider.name*/}
+            {/*service.config.provider.runtime*/}
+            {'x x'}
           </div>
         </div>
       </div>
-      <div className={styles.actions}>
+      {/*<div className={styles.actions}>
         { service.error
           ? <Button disabled>View Service</Button>
           : <Link to={`/service/${service.id}`}><Button>View Service</Button></Link>
@@ -76,7 +67,7 @@ const ServiceCard = ({ service, showDeleteModal }) => {
         >
           Remove from list
         </Button>
-      </div>
+      </div> */}
     </div>
   )
 }

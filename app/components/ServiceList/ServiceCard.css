@@ -1,13 +1,17 @@
 .service {
-  width: 20rem;
-  height: 20rem;
-  padding: $padding;
+  // width: 20rem;
+  // width: 24rem;
+  width: calc((100% / 3) - $padding);
+  // height: 20rem;
+  // padding: $padding 0;
+  border-top: 1px solid #ddd;
+  margin-right: $padding;
 }
 .info {
-
+  // margin-bottom: $tile;
 }
 .serviceMetaWrapper {
-  margin-top: 10px;
+
 }
 .serviceMeta {
 
@@ -16,9 +20,37 @@
   font-weight: bold;
   margin-right: 5px;
 }
-.serviceLink {
+.head {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  // padding: $padding 0;
+  // margin: $padding 0;
+  margin: 1rem 0;
+}
+.name {
+  // font-size: 2rem;
+  // font-weight: 300;
+  // line-height: 1;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: .25rem 0;
+}
+.path {
+  // margin: .25em 0;
+}
+.body {
+  // margin: $padding 0;
+  margin: 1rem 0;
+}
+.snippet {
+
+}
+.foot {
+  // margin: $padding 0;
+  // margin: 1rem 0;
+  margin-top: $tile;
+  margin-bottom: 1rem;
 }
 .actions {
   display: flex;
