@@ -97,7 +97,7 @@
   // padding-right: 30px;
   // padding: 0 4rem !important;
   padding: 0 calc($padding * 2);
-  min-height: 200vh !important;
+  // min-height: 200vh !important;
 }
 
 .contents {
