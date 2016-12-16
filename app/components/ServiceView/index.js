@@ -106,34 +106,40 @@ export default class ServiceView extends Component {
     const content = (
       <div className={styles.content}>
         <div className={styles.service}>
-          <div className={styles.head}>
-            <div className={styles.info}>
-              <div className={styles.title}>
-                {service.config.service}
+          <div className={styles.infos} >
+            { service.error && service.error.type === PATH_NOT_FOUND &&
+              <div>
+                Couldn't find the service path anymore. In case you moved it please remove
+                and re-add this service again.
               </div>
-              <div className={styles.path} role="button" onClick={ () => shell.openExternal(`file://${service.projectPath}`) } disabled={!!service.error}>
-                <code>
-                  {service.projectPath}
-                </code>
+            }
+            { service.error && service.error.type === PARSING_YAML_FAILED &&
+              <div>
+                Couldn't parse the serverless.yaml file.
               </div>
+            }
+            <div className={styles.title}>
+              {service.config.service}
             </div>
-            <div className={styles.actions}>
-              <div className={styles.action} role='button' onClick={ () => showDeleteModal(service.id) }>
-                <div className={styles.icon}>
-                  <svg viewBox="0 0 100 100" style={{ width: '1em', height: '1em' }}>
-                    <path className={styles.fill} vector-effect="non-scaling-stroke" d="M59,50c0,5-4,9-9,9s-9-4-9-9s4-9,9-9S59,45,59,50z M14,41c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S19,41,14,41z M86,41 c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S91,41,86,41z" />
-                  </svg>
-                </div>
-              </div>
+            <div className={styles.path} onClick={ () => shell.openExternal(`file://${service.projectPath}`) } disabled={!!service.error}>
+              <code>
+                {service.projectPath}
+              </code>
             </div>
-          </div>
-          <div className={styles.body}>
             <div className={styles.snippet}>
               {'Lorem ipsum dolor sit amet, adipiscing elit. Donec imperdiet orci quis velit sodales, vel ultrices lorem lacinia. Quisque faucibus, urna scelerisque suscipit feugiat, felis purus pulvinar nisi, vitae ullamcorper turpis tortor quis ligula. Curabitur sit amet laoreet nunc.'}
-              {/*'Dolor sit amet, consectetur adipiscing elit. Donec eget bibendum mauris, quis accumsan quam.'*/}
             </div>
             <div className={styles.meta}>
               {`${service.config.provider.name} - ${service.config.provider.runtime}`}
+            </div>
+          </div>
+          <div className={styles.actions}>
+            <div className={styles.action} onClick={ () => showDeleteModal(service.id) }>
+              <div className={styles.icon}>
+                <svg viewBox="0 0 100 100" style={{ width: '1em', height: '1em' }}>
+                  <path className={styles.fill} vector-effect="non-scaling-stroke" d="M59,50c0,5-4,9-9,9s-9-4-9-9s4-9,9-9S59,45,59,50z M14,41c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S19,41,14,41z M86,41 c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S91,41,86,41z" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>

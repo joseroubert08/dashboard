@@ -1,4 +1,22 @@
-
+.service,
+.action,
+.path {
+  cursor: default;
+}
+.infos {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.service {
+  display: flex;
+  padding-top: $padding;
+  padding-right: $padding;
+  padding-bottom: calc($padding * 2);
+  padding-left: calc($padding * 2);
+  // padding: $padding calc($padding * 2);
+}
 .content {
   flex-grow: 1;
   height: 100%;
@@ -117,9 +135,6 @@
 
 
 .actions {
-  position: absolute;
-  top: 0;
-  right: 0;
   display: flex;
 }
 .action {
@@ -127,23 +142,21 @@
   align-items: center;
   justify-content: center;
   width: $tile;
-  height: $tile;
-  pointer-events: auto;
-  transition: opacity 250ms 0ms;
+  height: calc($tile + ($padding * 2));
+  padding: $padding 0;
   &:hover,
   &:active {
     path {
-      // stroke-width: 2 !important;
       stroke: #0074c2 !important;
       fill: #0074c2 !important;
       transition: box-shadow 250ms 0ms;
     }
     .icon {
       box-shadow:
-        0  2px #0074c2 inset,
-        0 -2px #0074c2 inset,
-        2px  0 #0074c2 inset,
-        -2px 0 #0074c2 inset;
+        0  1px #0074c2 inset,
+        0 -1px #0074c2 inset,
+        1px  0 #0074c2 inset,
+        -1px 0 #0074c2 inset;
       transition: box-shadow 250ms 0ms;
     }
   }
@@ -155,9 +168,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: $tile;
-  height: $tile;
-  border-radius: $tile;
+  width: $padding;
+  height: $padding;
+  border-radius: 4rem;
   transition: box-shadow 500ms 0ms;
 }
 .head {
@@ -180,7 +193,7 @@
 .path {
   padding-top: .375rem;
   padding-bottom: .375rem;
-  pointer-events: auto;
+  // pointer-events: auto;
   code {
     transition: 250ms 0ms;
   }
@@ -195,15 +208,6 @@
       transition: 100ms 0ms;
     }
   }
-}
-.service {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  pointer-events: none;
-  // padding: 1.5rem $tile !important;
-  padding: calc($padding * 2) !important;
-  position: relative !important;
 }
 .snippet {
   display: -webkit-box;

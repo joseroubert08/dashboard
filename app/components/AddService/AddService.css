@@ -17,12 +17,15 @@
   transition: opacity 250ms 0ms;
   &:hover,
   &:active {
+    path {
+      stroke: #0074c2 !important;
+    }
     .icon {
-      box-shadow:
-        0  1px #eee  inset,
-        0 -1px #eee  inset,
-        1px  0 #eee  inset,
-        -1px 0 #eee  inset;
+      // box-shadow:
+      //   0  1px #eee  inset,
+      //   0 -1px #eee  inset,
+      //   1px  0 #eee  inset,
+      //   -1px 0 #eee  inset;
       transition: 100ms 0ms;
     }
   }

@@ -17,7 +17,7 @@
 .service {
   display: flex;
   // align-items: center;
-  position: relative;
+  // position: relative;
   // align-items: flex-start;
   // justify-content: space-between;
   // padding: 20px 30px;
@@ -110,7 +110,7 @@
   // align-items: center;
 }
 .actions {
-  position: relative;
+  // position: relative;
   display: flex;
   // align-items: center;
   // position: absolute;
