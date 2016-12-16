@@ -136,21 +136,19 @@
       // stroke-width: 2 !important;
       stroke: #0074c2 !important;
       fill: #0074c2 !important;
+      transition: box-shadow 250ms 0ms;
     }
     .icon {
-      // box-shadow:
-      //   0  1px #eee  inset,
-      //   0 -1px #eee  inset,
-      //   1px  0 #eee  inset,
-      //   -1px 0 #eee  inset;
-      transition: 100ms 0ms;
+      box-shadow:
+        0  2px #0074c2 inset,
+        0 -2px #0074c2 inset,
+        2px  0 #0074c2 inset,
+        -2px 0 #0074c2 inset;
+      transition: box-shadow 250ms 0ms;
     }
   }
-  &:active {
-    .icon {
-      background: #eee;
-      transition: 0ms 0ms;
-    }
+  path {
+    transition: box-shadow 500ms 0ms;
   }
 }
 .icon {
@@ -160,7 +158,7 @@
   width: $tile;
   height: $tile;
   border-radius: $tile;
-  transition: 500ms 0ms;
+  transition: box-shadow 500ms 0ms;
 }
 .head {
   display: flex;

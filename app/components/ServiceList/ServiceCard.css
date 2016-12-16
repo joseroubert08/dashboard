@@ -16,7 +16,7 @@
 }
 .service {
   display: flex;
-  align-items: center;
+  // align-items: center;
   position: relative;
   // align-items: flex-start;
   // justify-content: space-between;
@@ -131,7 +131,8 @@
   // width: 1.5rem;
   // height: 1.5rem;
   width: $tile;
-  height: $tile;
+  height: calc($tile + ($padding * 2));
+  padding: $padding 0;
   &:hover,
   &:active {
     // background: #ccc;
@@ -139,22 +140,19 @@
       // stroke-width: 2 !important;
       stroke: #0074c2 !important;
       fill: #0074c2 !important;
-      transition: 100ms 0ms;
+      transition: box-shadow 250ms 0ms;
     }
     .icon {
-      // box-shadow:
-      //   0  1px #eee  inset,
-      //   0 -1px #eee  inset,
-      //   1px  0 #eee  inset,
-      //   -1px 0 #eee  inset;
-      // transition: 100ms 0ms;
+      box-shadow:
+        0  1px #0074c2 inset,
+        0 -1px #0074c2 inset,
+        1px  0 #0074c2 inset,
+        -1px 0 #0074c2 inset;
+      transition: box-shadow 250ms 0ms;
     }
   }
-  &:active {
-    .icon {
-      background: #eee;
-      transition: 0ms 0ms;
-    }
+  path {
+    transition: box-shadow 500ms 0ms;
   }
 }
 .icon {
@@ -168,7 +166,7 @@
   width: $padding;
   height: $padding;
   border-radius: 4rem;
-  transition: 500ms 0ms;
+  transition: box-shadow 500ms 0ms;
 }
 .delete {
 

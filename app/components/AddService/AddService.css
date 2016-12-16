@@ -1,14 +1,16 @@
 .actions {
   display: flex;
   // padding-top: 1rem;
+  padding-right: $padding;
+  // padding-right: calc($padding * 2);
 }
 .action {
   // background: red;
   display: flex;
   align-items: center;
   justify-content: center;
-  // width: $tile;
-  // height: $tile;
+  width: $tile;
+  height: $tile;
   // width: 3rem;
   // height: 3rem;
   pointer-events: auto;

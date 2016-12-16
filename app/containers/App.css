@@ -36,7 +36,8 @@ $NavBackground: #FFD426;
   // padding-top: 1rem;
   // padding: 0 $padding;
   margin-top: $padding;
-  padding: 0 calc($padding * 2);
+  // padding: 0 calc($padding * 2);
+  padding-left: calc($padding * 2);
 }
 .border {
   position: absolute;
