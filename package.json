@@ -21,7 +21,9 @@
     "hot-server": "echo \"depreciated command! Instead use: npm run dev\"",
     "start-hot": "echo \"depreciated command! Instead use: npm start\"",
     "cleanup": "mop -v",
-    "open": "cd release/darwin-x64/Serverless-darwin-x64/ && open ."
+    "open": "cd release/darwin-x64/Serverless-darwin-x64/ && open .",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "bin": {
     "electron": "./node_modules/.bin/electron"
@@ -31,9 +33,9 @@
   "license": "MIT",
   "homepage": "https://github.com/serverless/dashboard#readme",
   "config": {
-   "ghooks": {
-     "pre-push": "npm run lint"
-   }
+    "ghooks": {
+      "pre-push": "npm run lint"
+    }
   },
   "devDependencies": {
     "asar": "^0.12.2",
@@ -122,10 +124,12 @@
     "serverless-site": "github:serverless/site#ee4fb9d4cd9713c4273dc9281e613b23f450614f",
     "source-map-support": "^0.4.6",
     "uuid": "^2.0.3",
-    "yaml-ast-parser": "0.0.30"
+    "yaml-ast-parser": "0.0.30",
+    "snyk": "^1.189.0"
   },
   "devEngines": {
     "node": "4.x || 5.x || 6.x",
     "npm": "2.x || 3.x"
-  }
+  },
+  "snyk": true
 }
